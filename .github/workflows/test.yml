@@ -16,3 +16,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE wordpress_test;' -uroot -proot
+          mysql -e 'SHOW DATABASES;' -uroot -proot      
